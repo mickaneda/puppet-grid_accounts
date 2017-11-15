@@ -1,0 +1,98 @@
+grid_accounts::home_path: '/scratch/pools_home'
+grid_accounts::pool_users:
+#
+# ATLAS: atlas /atlas/ROLE=lcgadmin /atlas/ROLE=production /atlas/ROLE=pilot
+  '/atlas': 
+     ensure: 'present'
+     group: 'atlas'
+     gid: 5000
+     vo_group: 'atlas'
+     uid_range: '5000-5099'
+     users_num: 20
+     comment: 'ATLAS Generic'
+  '/atlas/Role=lcgadmin':
+     ensure: 'present'
+     group: 'atlsgm'
+     gid: 5001
+     vo_group: 'atlas'
+     uid_range: '5100-5199'
+     users_num: 5
+     comment: 'ATLAS Software Manager'
+  '/atlas/Role=production':
+     ensure: 'present'
+     group: 'atlprd'
+     gid: 5002
+     vo_group: 'atlas'
+     uid_range: '5200-5299'
+     users_num: 20
+     comment: 'ATLAS Production'
+  '/atlas/Role=pilot':
+     ensure: 'present'
+     group: 'atlpil'
+     gid: 5003
+     vo_group: 'atlas'
+     uid_range: '5300-5399'
+     users_num: 20
+     comment: 'ATLAS Users Pilot'
+#
+# LHCb: lhcb /lhcb/ROLE=lcgadmin /lhcb/ROLE=production /lhcb/ROLE=pilot
+  '/lhcb':
+     ensure: 'present'
+     group: 'lhcb'
+     gid: 5004
+     vo_group: 'lhcb'
+     uid_range: '5400-5499'
+     users_num: 20
+     comment: 'LHCb Generic'
+  '/lhcb/Role=lcgadmin':
+     ensure: 'present'
+     group: 'lhcbsgm'
+     gid: 5005
+     vo_group: 'lhcb'
+     uid_range: '5500-5599'
+     users_num: 5
+     comment: 'LHCb Software Manager'
+  '/lhcb/Role=production':
+     ensure: 'present'
+     group: 'lhcbprd'
+     gid: 5006
+     vo_group: 'lhcb'
+     uid_range: '5600-5699'
+     users_num: 20
+     comment: 'LHCb Production'
+  '/lhcb/Role=pilot':
+     ensure: 'present'
+     group: 'lhcbpil'
+     gid: 5007
+     vo_group: 'lhcb'
+     uid_range: '5700-5799'
+     users_num: 20
+     comment: 'LHCb Users Pilot'
+#
+# Dteam: dteam
+  '/dteam':
+     ensure: 'present'
+     group: 'dteam'
+     gid: 5013
+     vo_group: 'dteam'
+     uid_range: '6300-6399'
+     users_num: 20
+     comment: 'Dteam Generic'
+#
+# Ops: ops /ops/ROLE=pilot
+  '/ops':
+     ensure: 'present'
+     group: 'ops'
+     gid: 5014
+     vo_group: 'ops'
+     uid_range: '6400-6499'
+     users_num: 20
+     comment: 'Ops Generic'
+  '/ops/Role=pilot':
+     ensure: 'present'
+     group: 'opspil'
+     gid: 5015
+     vo_group: 'ops'
+     uid_range: '6500-6599'
+     users_num: 5
+     comment: 'Ops Users pilot'
