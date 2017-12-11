@@ -7,7 +7,7 @@ define grid_accounts::create_users( $home_path = "/home", $users = {}){
    next if data["ensure"] == "absent" %>
   <% uid_fl = data["uid_range"].split("-");
      uids = (uid_fl[0]..uid_fl[1]).to_a;
-     (1..data["users_num"]).each do |i| %>
+     (1..data["users_num"].to_i).each do |i| %>
   <% user = sprintf("%s%#03i",data["group"],i) %>
     <%= user %>:
        ensure: <%= data["ensure"] %>

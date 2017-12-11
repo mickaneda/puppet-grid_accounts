@@ -5,7 +5,7 @@ define grid_accounts::create_homedirs($home_path = "", $dirs = {}){
 ---
 <% @dirs.each_pair do |fqan, data |
    next if data["ensure"] == "absent" %>
-  <% (1..data["users_num"]).each do |i| %>
+  <% (1..data["users_num"].to_i).each do |i| %>
     <% user = sprintf("%s%#03i",data["group"],i) %>
     <%= user %>:
       ensure: "directory"
