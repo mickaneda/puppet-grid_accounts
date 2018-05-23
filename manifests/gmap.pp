@@ -20,10 +20,11 @@ define grid_accounts::gmap ( $type = "grid", $role_maps = {}){
 
     $filedata = parseyaml($yaml)
 #    notify {"grid-mapfile ($filedata)": }
-    create_resources('concat::fragment',$filedata)
-
-    file { "/etc/grid-security/local-grid-mapfile":
-      ensure => "present"
+    if $filedata {
+      create_resources('concat::fragment',$filedata)
+      file { "/etc/grid-security/local-grid-mapfile":
+        ensure => "present"
+      }
     }
   }
 
@@ -47,7 +48,9 @@ define grid_accounts::gmap ( $type = "grid", $role_maps = {}){
 
     $filedata = parseyaml($yaml)
 #    notify {"groupmapfile ($filedata)": }
-    create_resources('concat::fragment',$filedata)
+    if $filedata {
+      create_resources('concat::fragment',$filedata)
+    }
   }
   
   if $type == "dir" {
