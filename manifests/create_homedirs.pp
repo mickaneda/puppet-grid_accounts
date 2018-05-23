@@ -13,7 +13,6 @@ define grid_accounts::create_homedirs($home_path = "", $dirs = {}){
       owner: <%= sprintf("%s%#03i",data["group"],i) %>
       group: <%= data["group"] %>
       mode: "0700"
-      require: File[<%= @home_path %>] 
     <% end %>
 <% end -%>
   ')
