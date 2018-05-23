@@ -15,6 +15,8 @@ define grid_accounts::create_groups($groups = {}){
   #notify { "Converted: $yaml": }
   $groupdata = parseyaml($yaml)
 #  notify { "Converted: $groupdata": }
-  create_resources('group',$groupdata)
+  if $groupdata {
+    create_resources('group',$groupdata)
+  }
 }
-      
+

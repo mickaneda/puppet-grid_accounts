@@ -20,5 +20,7 @@ define grid_accounts::create_homedirs($home_path = "", $dirs = {}){
 
   $dirdata = parseyaml($yaml)
 #  notify { "$dirdata": } 
-  create_resources('file',$dirdata)
+  if $dirdata {
+    create_resources('file',$dirdata)
+  }
 }

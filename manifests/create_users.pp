@@ -24,6 +24,8 @@ define grid_accounts::create_users( $home_path = "/home", $users = {}){
 
   $userdata = parseyaml($yaml)
 #  notify {"Blah Blah $userdata": } 
-  create_resources('user',$userdata)
+  if $userdata {
+    create_resources('user',$userdata)
+  }
 
 }

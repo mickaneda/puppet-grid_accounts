@@ -71,7 +71,9 @@ define grid_accounts::gmap ( $type = "grid", $role_maps = {}){
 #    notify {"$yaml": }
     $mapdirdata = parseyaml($yaml)
 #    notify {"Blah Blah $mapdirdata": }
-    create_resources('file',$mapdirdata)
+    if $mapdirdata {
+      create_resources('file',$mapdirdata)
+    }
   }           
 }
   
