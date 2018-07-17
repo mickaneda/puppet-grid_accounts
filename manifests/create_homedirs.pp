@@ -10,7 +10,7 @@ define grid_accounts::create_homedirs($home_path = "", $dirs = {}){
     <%= user %>:
       ensure: "directory"
       path: <%= sprintf("%s/%s", @home_path, user) %>
-      owner: <%= sprintf("%s%#03i",data["group"],i) %>
+      owner: <%= user %>
       group: <%= data["group"] %>
       mode: "0700"
     <% end %>
