@@ -7,6 +7,7 @@ define grid_accounts::delete_users($users = {}){
    next if data["ensure"] != "absent" %>
   <% (1..data["users_num"]).each do |i|
      user = sprintf("%s%#03i",data["group"],i) %>
+     user = data["user_prefix"] ? sprintf("%s%#03i",data["user_prefix"],i) :  sprintf("%s%#03i",data["group"],i) %>
     <%= user %>:
       ensure: <%= data["ensure"] %>
       name: <%= user %>
