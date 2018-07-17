@@ -12,12 +12,13 @@ define grid_accounts::gmap ( $type = "grid", $role_maps = {}){
 <% @role_maps.each_pair do |fqan, data |
    next if data["ensure"] == "absent"
    fqanr = fqan =~ /Role=/i ? fqan : fqan+"/Role=NULL"
-   fqncover = fqan =~ /Role=/i ? "" : %q{\"}+fqan+%q{/*/Role=*\" .}+data["group"]+ "\\\n" + %q{\"}+fqan+%q{/*\" .}+data["group"]+ "\\\n"
+   user = data["user_prefix"] ? data["user_prefix"] : data["group"]
+   fqncover = fqan =~ /Role=/i ? "" : %q{\"}+fqan+%q{/*/Role=*\" .}+user+ "\\\n" + %q{\"}+fqan+%q{/*\" .}+user+ "\\\n"
 %>
 
    <%= fqan %>_grid:
      target: "/etc/grid-security/<%= @title %>"
-     content: "\"<%= fqanr %>/Capability=NULL\" .<%= data["group"] %>\n\"<%= fqan %>\" .<%= data["group"] %>\n<%= fqncover %>"
+     content: "\"<%= fqanr %>/Capability=NULL\" .<%= user %>\n\"<%= fqan %>\" .<%= user %>\n<%= fqncover %>"
    <% end -%>
     ')
 
