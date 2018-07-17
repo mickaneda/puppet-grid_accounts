@@ -8,7 +8,8 @@ define grid_accounts::create_users( $home_path = "/home", $users = {}){
   <% uid_fl = data["uid_range"].split("-");
      uids = (uid_fl[0]..uid_fl[1]).to_a;
      (1..data["users_num"].to_i).each do |i| %>
-  <% user = data["user_prefix"] ? sprintf("%s%#03i",data["user_prefix"],i) :  sprintf("%s%#03i",data["group"],i) %>
+    <% ndigit = data["ndigit"] ? data["ndigit"] : 3 %>
+    <% user = data["user_prefix"] ? sprintf("%s%#0#{ndigit}i",data["user_prefix"],i) :  sprintf("%s%#0#{ndigit}i",data["group"],i) %>
     <%= user %>:
        ensure: <%= data["ensure"] %>
        name: <%= user %>

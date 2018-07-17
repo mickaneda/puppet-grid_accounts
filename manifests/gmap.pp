@@ -68,7 +68,8 @@ define grid_accounts::gmap ( $type = "grid", $role_maps = {}){
   <% uid_fl = data["uid_range"].split("-");
     uids = (uid_fl[0]..uid_fl[1]).to_a;
     (1..data["users_num"]).each do |i| %>
-  <% user = sprintf("%s%#03i",data["group"],i) %>
+  <% ndigit = data["ndigit"] ? data["ndigit"] : 3 %>
+  <% user = data["user_prefix"] ? sprintf("%s%#0#{ndigit}i",data["user_prefix"],i) :  sprintf("%s%#0#{ndigit}i",data["group"],i) %>
 "/etc/grid-security/<%= @title %>/<%= user %>":
   ensure: <%= data["ensure"] %>
   require: File[/etc/grid-security/<%= @title %>]

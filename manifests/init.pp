@@ -4,7 +4,7 @@ class grid_accounts(
   $home_path = "",
   $resources = { accounts => true, gridmapfile => true, groupmapfile => false, gridmapdir => false }
 ) {
-  # $pool_users = { FQAN => { group => 'atlas', gid => '1001', user_prefix => 'atlas', vo_group => 'atlas', uid_range => '9000-9049', users_num => 20 }
+  # $pool_users = { FQAN => { group => 'atlas', gid => '1001', user_prefix => 'atlas', ndigit => '3', vo_group => 'atlas', uid_range => '9000-9049', users_num => 20 }
 
   if $resources['accounts'] {
 #    notify { "accounts......": }
