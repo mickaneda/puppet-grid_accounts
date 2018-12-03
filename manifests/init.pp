@@ -9,11 +9,15 @@ class grid_accounts(
   if $resources['accounts'] {
 #    notify { "accounts......": }
     # If ensure "present" create groups, users, homedirs
-    Grid_accounts::Create_groups["pool_groups"] -> Grid_accounts::Create_users["pool_users"] -> Grid_accounts::Create_homedirs["pool_homedirs"]
-    grid_accounts::create_groups{ "pool_groups": groups => $pool_users }
-    grid_accounts::create_users{ "pool_users": home_path => $home_path, users => $pool_users }
     if $resources['make_home'] {
+      Grid_accounts::Create_groups["pool_groups"] -> Grid_accounts::Create_users["pool_users"] -> Grid_accounts::Create_homedirs["pool_homedirs"]
+      grid_accounts::create_groups{ "pool_groups": groups => $pool_users }
+      grid_accounts::create_users{ "pool_users": home_path => $home_path, users => $pool_users }
       grid_accounts::create_homedirs{ "pool_homedirs": home_path => $home_path, dirs => $pool_users }
+    }else{
+      Grid_accounts::Create_groups["pool_groups"] -> Grid_accounts::Create_users["pool_users"]
+      grid_accounts::create_groups{ "pool_groups": groups => $pool_users }
+      grid_accounts::create_users{ "pool_users": home_path => $home_path, users => $pool_users }
     }
 
     # If ensure "absent" delete groups, users, homedirs
