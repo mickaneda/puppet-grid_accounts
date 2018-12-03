@@ -1,0 +1,19 @@
+{
+  "name": "puppet-grid_accounts",
+  "version": "0.1.1",
+  "author": "HEP-Puppet",
+  "summary": "This module configure the grid accounts on WN/CE",
+  "license": "",
+  "source": "https://github.com/mickaneda/puppet-grid_accounts",
+  "description": "This module configure the grid accounts on WN/CE",
+  "issues_url": "https://github.com/mickaneda/puppet-grid_accounts/issues",
+  "tags": [
+  ],
+  "project_page": "https://github.com/mickaneda/puppet-grid_accounts",
+  "requirements": [
+  ],
+  "operatingsystem_support": [
+  ],
+  "dependencies": [
+  ]
+}
