@@ -1,7 +1,7 @@
 ####### Delete exp dirs/files
-define grid_accounts::delete_expsoft($dirs = {}, $files = {}){
+define grid_accounts::delete_expsoft($top_dir = "", $dirs = {}, $files = {}){
 
-  if top_dir == "" {
+  if $top_dir == "" {
     return
   }
 
