@@ -15,7 +15,7 @@ class grid_accounts(
     Grid_accounts::Create_groups["pool_groups"] -> Grid_accounts::Create_users["pool_users"] -> Grid_accounts::Create_expsoft["expsoft"]
     grid_accounts::create_groups{ "pool_groups": groups => $pool_users }
     grid_accounts::create_users{ "pool_users": home_path => $home_path, users => $pool_users }
-    grid_accounts::create_expsoft{ "expsoft": top_dir => expsoft_top_dir, dirs => expsoft_dirs, files => expsoft_files }
+    grid_accounts::create_expsoft{ "expsoft": top_dir => $expsoft_top_dir, dirs => $expsoft_dirs, files => $expsoft_files }
     if $resources['make_home'] {
       Grid_accounts::Create_users["pool_users"] -> Grid_accounts::Create_homedirs["pool_homedirs"]
       grid_accounts::create_homedirs{ "pool_homedirs": home_path => $home_path, dirs => $pool_users }
@@ -26,7 +26,7 @@ class grid_accounts(
     grid_accounts::delete_users{ "pool_users": users => $pool_users }
     grid_accounts::delete_groups{ "pool_groups": groups => $pool_users }
     grid_accounts::delete_homedirs{ "pool_homedirs": home_path => $home_path, dirs => $pool_users }
-    grid_accounts::delete_expsoft{ "expsoft": top_dir => expsoft_top_dir, dirs => expsoft_dirs, files => expsoft_files }
+    grid_accounts::delete_expsoft{ "expsoft": top_dir => $expsoft_top_dir, dirs => $expsoft_dirs, files => $expsoft_files }
   }
 
   if $resources['gridmapfile'] {
