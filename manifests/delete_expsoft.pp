@@ -1,6 +1,10 @@
+####### Delete exp dirs/files
 define grid_accounts::delete_expsoft($dirs = {}, $files = {}){
 
-####### Delete exp dirs/files
+  if top_dir == "" {
+    return
+  }
+
   $dirs_yaml = inline_template('
 ---
 <% @files.each_pair do |fqan, data |

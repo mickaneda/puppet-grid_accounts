@@ -1,10 +1,12 @@
 # Create exp_soft directories/files
 define grid_accounts::create_expsoft(top_dir = "", $dirs = {}, $files = {}){
 
-  if top_dir != "" {
-    exec {"expsoft_top_dir":
-      command => "/bin/mkdir -p ${top_dir}",
-    }
+  if top_dir == "" {
+    return
+  }
+
+  exec {"expsoft_top_dir":
+    command => "/bin/mkdir -p ${top_dir}",
   }
   $yaml = inline_template('
 ---
