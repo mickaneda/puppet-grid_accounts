@@ -5,21 +5,21 @@ define grid_accounts::create_expsoft($dirs = {}, $files = {}){
 ---
 <% @dirs.each_pair do |fqan, data |
    next if data["ensure"] == "absent" %>
-   <%= fqdn %>:
+   <%= fqan %>:
      ensure: "directory"
-     path: <%= data["path"] %>
-     owner: <%= data["owner"] %>
-     group: <%= data["group"] %>
-     mode: <%= data["mode"] %>
+     path: "<%= data["path"] %>"
+     owner: "<%= data["owner"] %>"
+     group: "<%= data["group"] %>"
+     mode: "<%= data["mode"] %>"
 <% end -%>
 <% @files.each_pair do |fqan, data |
    next if data["ensure"] == "absent" %>
-   <%= fqdn %>:
-     path: <%= data["path"] %>
-     source: <%= data["source"] %>
-     owner: <%= data["owner"] %>
-     group: <%= data["group"] %>
-     mode: <%= data["mode"] %>
+   <%= fqan %>:
+     path: "<%= data["path"] %>"
+     source: "<%= data["source"] %>"
+     owner: "<%= data["owner"] %>"
+     group: "<%= data["group"] %>"
+     mode: "<%= data["mode"] %>"
 <% end -%>
   ')
   $dirdata = parseyaml($yaml)

@@ -5,18 +5,18 @@ define grid_accounts::delete_expsoft($dirs = {}, $files = {}){
 ---
 <% @files.each_pair do |fqan, data |
   next if data["ensure"] != "absent" %>
-  <%= fqdn %>:
-    ensure: <%= data["ensure"] %>
-    path: <%= data["path"] %>
+  <%= fqan %>:
+    ensure: "<%= data["ensure"] %>"
+    path: "<%= data["path"] %>"
     recurse: true
     purge: true
     force: true
 <% end -%>
 <% @dirs.each_pair do |fqan, data |
   next if data["ensure"] != "absent" %>
-  <%= fqdn %>:
-    ensure: <%= data["ensure"] %>
-    path: <%= data["path"] %>
+  <%= fqan %>:
+    ensure: "<%= data["ensure"] %>"
+    path: "<%= data["path"] %>"
     recurse: true
     purge: true
     force: true
