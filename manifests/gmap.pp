@@ -13,12 +13,16 @@ define grid_accounts::gmap ( $type = "grid", $role_maps = {}){
    next if data["ensure"] == "absent"
    fqanr = fqan =~ /Role=/i ? fqan : fqan+"/Role=NULL"
    user = data["user_prefix"] ? data["user_prefix"] : data["group"]
-   fqncover = fqan =~ /Role=/i ? "" : %q{\"}+fqan+%q{/*/Role=*\" .}+user+ "\\\n" + %q{\"}+fqan+%q{/*\" .}+user+ "\\\n"
+   ndigit = data["ndigit"] ? data["ndigit"] : 3
+   if data["users_num"] > 1 && ndigit > 0
+     user = "." + user
+   end
+   fqncover = fqan =~ /Role=/i ? "" : %q{\"}+fqan+%q{/*/Role=*\" }+user+ "\\\n" + %q{\"}+fqan+%q{/*\" }+user+ "\\\n"
 %>
 
    <%= fqan %>_grid:
      target: "/etc/grid-security/<%= @title %>"
-     content: "\"<%= fqanr %>/Capability=NULL\" .<%= user %>\n\"<%= fqan %>\" .<%= user %>\n<%= fqncover %>"
+     content: "\"<%= fqanr %>/Capability=NULL\" <%= user %>\n\"<%= fqan %>\" <%= user %>\n<%= fqncover %>"
    <% end -%>
     ')
 
