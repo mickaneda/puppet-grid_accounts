@@ -9,7 +9,7 @@ define grid_accounts::create_users( $home_path = "/home", $users = {}){
      uids = (uid_fl[0]..uid_fl[1]).to_a;
      (1..data["users_num"].to_i).each do |i| %>
     <% ndigit = data["ndigit"] ? data["ndigit"] : 3 %>
-    <% user = data["user_prefix"] ? data["user_prefix"] :  sprintf("%s%#0#{ndigit}i",data["group"],i) %>
+    <% user = data["user_prefix"] ? data["user_prefix"] : data["group"] %>
     <% if data["users_num"] > 1 && ndigit > 0 %>
       <% user = sprintf("%s%#0#{ndigit}i",user,i) %>
     <% end %>
